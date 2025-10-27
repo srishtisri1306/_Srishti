@@ -1,0 +1,21 @@
+/**
+ * IE Create Cookies Home Page for Intersitital Ad js.
+ *
+ * @package indian-express
+ */
+
+var homecookiesname  = interstitial_cookies.cookies_name;
+var homecookiestime  = parseInt( interstitial_cookies.cookies_time );
+var homedeviceoption = parseInt( interstitial_cookies.device_option );
+
+function createCookiesHomeInterstitial(name,value,exTime) {
+	var date = new Date();
+	date.setTime( date.getTime() + (exTime) );
+	var expires     = date.toGMTString();
+	var offset      = -date.getTimezoneOffset() / 60;
+	document.cookie = name + '=' + value + ';timezone=' + offset + ';expires=' + expires + ';path=/';
+}
+
+if ( 1 === homedeviceoption ) {
+	createCookiesHomeInterstitial( homecookiesname, 'indianexpresshome', homecookiestime );
+}
